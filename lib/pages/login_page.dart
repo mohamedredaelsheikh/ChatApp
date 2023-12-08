@@ -9,17 +9,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  static String id = 'LoginPage';
+
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> formkey = GlobalKey();
 
-  static String id = 'LoginPage';
   String? passward;
 
   String? email;
 
   bool isLoading = false;
-
-  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
