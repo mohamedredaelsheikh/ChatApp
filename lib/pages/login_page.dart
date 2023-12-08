@@ -2,7 +2,7 @@ import 'package:chat_app/constant.dart';
 import 'package:chat_app/cubits/logincubit/login_cubit.dart';
 import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:chat_app/pages/chat_page.dart';
-import 'package:chat_app/pages/regiter_page.dart';
+import 'package:chat_app/pages/register_page.dart';
 import 'package:chat_app/widgets/custombuttom.dart';
 import 'package:chat_app/widgets/customtextfield.dart';
 import 'package:flutter/material.dart';
