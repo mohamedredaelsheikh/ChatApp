@@ -1,11 +1,11 @@
 import 'package:chat_app/constant.dart';
 
-class Message {
+class MessageModel {
   final String message;
   final String id;
 
-  Message(this.message, this.id);
-  factory Message.fromJson(jsonData) {
-    return Message(jsonData[kmessage], jsonData[kID]);
+  MessageModel(this.message, this.id);
+  factory MessageModel.fromJson(jsonData) {
+    return MessageModel(jsonData[kmessage], jsonData[kID]);
   }
 }

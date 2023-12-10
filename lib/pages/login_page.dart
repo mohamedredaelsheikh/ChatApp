@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
           isLoading = true;
         } else if (state is LoginSuccesState) {
           isLoading = false;
-          Navigator.pushNamed(context, ChatPage.id);
+          Navigator.pushNamed(context, ChatPage.id, arguments: email);
         } else if (state is LoginFailureState) {
           isLoading = false;
           showSnackBar(context, state.error);

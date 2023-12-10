@@ -6,7 +6,7 @@ class ChatBubleFromFriend extends StatelessWidget {
     super.key,
     required this.message,
   });
-  final Message message;
+  final MessageModel message;
   @override
   Widget build(BuildContext context) {
     return Align(

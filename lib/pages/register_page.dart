@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
           isLoading = true;
         } else if (state is RegisterSuccesState) {
           isLoading = false;
-          Navigator.pushNamed(context, ChatPage.id);
+          Navigator.pushNamed(context, ChatPage.id, arguments: email);
         } else if (state is RegisterFailureState) {
           isLoading = false;
           showSnackBar(context, state.error);

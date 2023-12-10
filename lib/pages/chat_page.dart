@@ -28,10 +28,10 @@ class ChatPage extends StatelessWidget {
           // If the Future throws an error, display it to the user
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
-          List<Message> messagelist = [];
+          List<MessageModel> messagelist = [];
           for (int i = 0; i < snapshot.data!.docs.length; i++) {
             messagelist.add(
-              Message.fromJson(
+              MessageModel.fromJson(
                 snapshot.data!.docs[i],
               ),
             );
@@ -72,6 +72,7 @@ class ChatPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: TextField(
                     controller: controllor,
+                    //
                     onSubmitted: (data) {
                       messages.add({
                         kmessage: data,
