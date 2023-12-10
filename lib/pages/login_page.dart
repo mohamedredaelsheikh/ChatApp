@@ -1,4 +1,5 @@
 import 'package:chat_app/constant.dart';
+import 'package:chat_app/cubits/chatcubit/chat_cubit.dart';
 import 'package:chat_app/cubits/logincubit/login_cubit.dart';
 import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:chat_app/pages/chat_page.dart';
@@ -35,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
           isLoading = true;
         } else if (state is LoginSuccesState) {
           isLoading = false;
+          BlocProvider.of<ChatCubit>(context).getMessages();
           Navigator.pushNamed(context, ChatPage.id, arguments: email);
         } else if (state is LoginFailureState) {
           isLoading = false;

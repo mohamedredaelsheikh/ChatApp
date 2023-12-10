@@ -5,4 +5,8 @@ sealed class ChatState {}
 
 class ChatInitial extends ChatState {}
 
-class ChatSuccessState extends ChatState {}
+class ChatSuccessState extends ChatState {
+  final List<MessageModel> massageslist;
+
+  ChatSuccessState({required this.massageslist});
+}

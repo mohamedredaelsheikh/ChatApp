@@ -17,16 +17,17 @@ class ChatCubit extends Cubit<ChatState> {
       kmessage: message,
       kCreateAt: DateTime.now(),
       'id': email,
-    } as MessageModel);
+    });
   }
 
   void getMessages() {
     messages.orderBy(kCreateAt, descending: true).snapshots().listen((event) {
+      messagelist.clear();
       for (var doc in event.docs) {
-        messages.add(MessageModel.fromJson(doc));
+        messagelist.add(MessageModel.fromJson(doc));
       }
 
-      emit(ChatSuccessState());
+      emit(ChatSuccessState(massageslist: messagelist));
     });
   }
 }
