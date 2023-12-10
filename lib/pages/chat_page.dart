@@ -12,12 +12,23 @@ class ChatPage extends StatelessWidget {
   ChatPage({super.key});
   List<MessageModel> messagelist = [];
   static String id = 'chatpage';
-  TextEditingController controllor = TextEditingController();
+  TextEditingController textcontrollor = TextEditingController();
   final scrollcontrollor = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     var email = ModalRoute.of(context)!.settings.arguments.toString();
+
+    void handleSubmitted(String data) {
+      BlocProvider.of<ChatCubit>(context)
+          .sendMessage(message: data, email: email);
+      textcontrollor.clear();
+      scrollcontrollor.animateTo(
+        0,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.fastOutSlowIn,
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -60,22 +71,16 @@ class ChatPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
-              controller: controllor,
-              onSubmitted: (data) {
-                BlocProvider.of<ChatCubit>(context)
-                    .sendMessage(message: data, email: email);
-                controllor.clear();
-                scrollcontrollor.animateTo(
-                  0,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.fastOutSlowIn,
-                );
-              },
+              controller: textcontrollor,
+              onSubmitted: handleSubmitted,
               decoration: InputDecoration(
                 hintText: 'Enter your message',
-                suffixIcon: const Icon(
-                  Icons.send,
-                  color: kPrimaryColor,
+                suffixIcon: IconButton(
+                  onPressed: () => handleSubmitted(textcontrollor.text),
+                  icon: const Icon(
+                    Icons.send,
+                    color: kPrimaryColor,
+                  ),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
